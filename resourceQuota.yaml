@@ -1,0 +1,14 @@
+# This has an additional effect; if you set a CPU request quota in a namespace,
+# then all pods need to set a CPU request in their definition, otherwise they will not be scheduled.
+# https://sysdig.com/blog/kubernetes-limits-requests/
+
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: mem-cpu-example
+spec:
+  hard:
+    requests.cpu: 2
+    requests.memory: 2Gi
+    limits.cpu: 3
+    limits.memory: 4Gi
